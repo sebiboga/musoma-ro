@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comenzi — Musoma PROD SRL</title>
+  <meta name="description" content="Plasează o comandă de agregate minerale: pietriș, nisip, argilă, caolin. Livrare în județul Cluj și la nivel național.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .order-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 32px 0; }
+    .step { text-align: center; padding: 20px; }
+    .step-num { width: 40px; height: 40px; background: var(--accent); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 12px; font-size: 1.1rem; }
+    .step h3 { font-size: 0.95rem; color: var(--primary); margin-bottom: 6px; }
+    .step p { font-size: 0.85rem; color: var(--text-light); }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="container">
+    <span>&#128205; Mintiu Gherlii, jud. Cluj</span>
+    <span>
+      <a href="mailto:mihaela_cj2006@yahoo.com">&#9993; mihaela_cj2006@yahoo.com</a>
+      <span style="margin:0 8px;opacity:0.3">|</span>
+      <a href="tel:+40740770068">&#9742; 0740 770 068</a>
+      <span style="margin:0 8px;opacity:0.3">|</span>
+      <span>CUI: 46132867</span>
+    </span>
+  </div>
+</div>
+
+<header>
+  <div class="container">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">M</div>
+      <div class="logo-text">
+        <strong>Musoma PROD</strong>
+        <small>Extracție &amp; Agregate</small>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">Acasă</a>
+      <a href="servicii.html">Servicii</a>
+      <a href="portofoliu-lucrari.html">Portofoliu</a>
+      <a href="comenzi.html" class="active">Comenzi</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1920&q=80')"></div>
+  <div class="container">
+    <h1>Plasează o comandă</h1>
+    <p>Completează formularul și echipa noastră îți va confirma comanda în cel mai scurt timp.</p>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="container">
+    <div class="order-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Alege materialul</h3>
+        <p>Selectează tipul de agregat: pietriș, nisip, argilă sau caolin.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Completează datele</h3>
+        <p>Specifică tonajul, adresa de livrare și datele de contact.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Confirmare</h3>
+        <p>Te vom contacta în 24h pentru confirmare și detalii logistice.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Livrare</h3>
+        <p>Programăm livrarea la termenul convenit, direct pe șantier.</p>
+      </div>
+    </div>
+
+    <div style="max-width:720px;margin:0 auto;">
+      <div style="background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);border:1px solid #e9ecef;">
+        <form>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div>
+              <label style="font-size:0.85rem;font-weight:600;color:var(--text);display:block;margin-bottom:4px;">Nume / Companie</label>
+              <input type="text" placeholder="Numele dumneavoastră" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:0.9rem;">
+            </div>
+            <div>
+              <label style="font-size:0.85rem;font-weight:600;color:var(--text);display:block;margin-bottom:4px;">Email</label>
+              <input type="email" placeholder="adresa@exemplu.ro" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:0.9rem;">
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+            <div>
+              <label style="font-size:0.85rem;font-weight:600;color:var(--text);display:block;margin-bottom:4px;">Telefon</label>
+              <input type="tel" placeholder="07xx xxx xxx" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:0.9rem;">
+            </div>
+            <div>
+              <label style="font-size:0.85rem;font-weight:600;color:var(--text);display:block;margin-bottom:4px;">Tip material</label>
+              <select style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:0.9rem;">
+                <option>Pietriș</option>
+                <option>Nisip</option>
+                <option>Argilă</option>
+                <option>Caolin</option>
+                <option>Agregate sortate</option>
+                <option>Transport materiale</option>
+                <option>Altele</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-top:16px;">
+            <label style="font-size:0.85rem;font-weight:600;color:var(--text);display:block;margin-bottom:4px;">Cantitate estimată (tone)</label>
+            <input type="text" placeholder="ex: 100" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:0.9rem;">
+          </div>
+          <div style="margin-top:16px;">
+            <label style="font-size:0.85rem;font-weight:600;color:var(--text);display:block;margin-bottom:4px;">Adresă livrare</label>
+            <textarea rows="3" placeholder="Localitate, județ, adresă completă" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:0.9rem;resize:vertical;"></textarea>
+          </div>
+          <div style="margin-top:16px;">
+            <label style="font-size:0.85rem;font-weight:600;color:var(--text);display:block;margin-bottom:4px;">Observații</label>
+            <textarea rows="3" placeholder="Alte detalii sau cerințe speciale" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:0.9rem;resize:vertical;"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="margin-top:20px;width:100%;">Trimite comanda</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>
+      <div class="logo" style="padding:0;">
+        <div class="logo-icon" style="background:var(--accent);">M</div>
+        <div class="logo-text">
+          <strong style="color:var(--white);">Musoma PROD</strong>
+          <small style="color:rgba(255,255,255,0.5);">Extracție &amp; Agregate</small>
+        </div>
+      </div>
+      <p style="margin-top:16px;">Start-up în domeniul extracției resurselor minerale, dedicat competențelor antreprenoriale feminine și dezvoltării durabile.</p>
+    </div>
+    <div>
+      <h4>Navigare</h4>
+      <a href="index.html">Acasă</a>
+      <a href="servicii.html">Servicii</a>
+      <a href="portofoliu-lucrari.html">Portofoliu</a>
+      <a href="comenzi.html">Comenzi</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>Activități</h4>
+      <a href="servicii.html">Extracție pietriș &amp; nisip</a>
+      <a href="servicii.html">Argilă &amp; caolin</a>
+      <a href="servicii.html">Transport agregate</a>
+      <a href="servicii.html">Consultanță</a>
+    </div>
+    <div>
+      <h4>Date fiscale</h4>
+      <p>CUI: 46132867</p>
+      <p>J2022002720124</p>
+      <p>CAEN: 0812</p>
+      <p>Mintiu Gherlii, Cluj</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container" style="display:block;text-align:center;padding:0 20px;">
+      &copy; 2025 Musoma PROD SRL. Toate drepturile rezervate. | Site reconstruit pe baza arhivei <a href="https://web.archive.org/web/20250329142135/https://www.musoma.ro/" style="display:inline;color:var(--accent);">Wayback Machine</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
