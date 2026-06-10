@@ -42,6 +42,9 @@
         <small>Extracție &amp; Agregate</small>
       </div>
     </a>
+    <div class="hamburger" onclick="document.querySelector('nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
     <nav>
       <a href="index.html">Acasă</a>
       <a href="servicii.html">Servicii</a>
@@ -51,9 +54,10 @@
     </nav>
   </div>
 </header>
+<script>document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>document.querySelector('nav').classList.remove('open')))</script>
 
 <section class="page-hero">
-  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1624969862644-791f3dc98927?w=1920&q=80')"></div>
+  <div class="page-hero-bg" style="background-image:url('images/volvo-ec250el-01.jpg')"></div>
   <div class="container">
     <h1>Portofoliu lucrări</h1>
     <p>Fiecare livrare confirmă angajamentul nostru pentru calitate.</p>
@@ -66,7 +70,7 @@
 
     <div class="portfolio-grid">
       <div class="portfolio-card">
-        <div class="portfolio-img" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80')"></div>
+        <div class="portfolio-img" style="background-image:url('images/unsplash-1600585154340-be6161a56a0c.jpg')"></div>
         <div class="portfolio-body">
           <h3>Aprovizionare agregate — Lot Autostradă</h3>
           <div class="meta">2024 — 5.000 tone pietriș sortat</div>
@@ -74,7 +78,7 @@
         </div>
       </div>
       <div class="portfolio-card">
-        <div class="portfolio-img" style="background-image:url('https://images.unsplash.com/photo-1624969862644-791f3dc98927?w=600&q=80')"></div>
+        <div class="portfolio-img" style="background-image:url('images/unsplash-1581092160607-ee22621dd758.jpg')"></div>
         <div class="portfolio-body">
           <h3>Exploatare argilă — Fabrică ceramică</h3>
           <div class="meta">2024 — Contract trimestrial</div>
@@ -82,7 +86,7 @@
         </div>
       </div>
       <div class="portfolio-card">
-        <div class="portfolio-img" style="background-image:url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80')"></div>
+        <div class="portfolio-img" style="background-image:url('images/volvo-ec250el-01.jpg')"></div>
         <div class="portfolio-body">
           <h3>Transport nisip — Stație betoane</h3>
           <div class="meta">2025 — Colaborare în derulare</div>

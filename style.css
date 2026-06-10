@@ -305,14 +305,25 @@ footer .logo-text small { color: rgba(255,255,255,0.5); }
 .data-table th { background: var(--primary); color: var(--white); font-weight: 600; }
 .data-table tr:hover { background: rgba(212,146,42,0.05); }
 
+/* Hamburger menu */
+.hamburger { display: none; cursor: pointer; padding: 10px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--primary); margin: 5px 0; transition: 0.3s; }
+
 /* Responsive */
 @media (max-width: 768px) {
   .hero h1 { font-size: 2rem; }
   .hero { min-height: 70vh; }
-  nav { display: none; }
+  .hamburger { display: block; }
+  nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); flex-direction: column; border-bottom: 2px solid var(--accent); box-shadow: var(--shadow); }
+  nav.open { display: flex; }
+  nav a { padding: 16px 20px; border-bottom: 1px solid #e9ecef; }
+  nav a.active { border-bottom-color: var(--accent); border-bottom-width: 2px; }
   .about-grid, .contact-grid { grid-template-columns: 1fr; }
   footer .container:first-of-type { grid-template-columns: 1fr 1fr; }
   .stats .container { grid-template-columns: 1fr 1fr; }
   .about-details { grid-template-columns: 1fr; }
   .top-bar .container { justify-content: center; text-align: center; }
+  .section-title { font-size: 1.5rem; }
+  .page-hero h1 { font-size: 1.8rem; }
+  .page-hero { padding: 60px 0; }
 }

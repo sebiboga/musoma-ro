@@ -33,6 +33,9 @@
         <small>Extracție &amp; Agregate</small>
       </div>
     </a>
+    <div class="hamburger" onclick="document.querySelector('nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
     <nav>
       <a href="index.html" class="active">Acasă</a>
       <a href="servicii.html">Servicii</a>
@@ -42,9 +45,10 @@
     </nav>
   </div>
 </header>
+<script>document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>document.querySelector('nav').classList.remove('open')))</script>
 
 <section class="hero">
-  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1920&q=80')"></div>
+  <div class="hero-bg" style="background-image:url('images/volvo-ec250el-01.jpg')"></div>
   <div class="container">
     <h1>Construim bazele <span>dezvoltării</span></h1>
     <p>Musoma PROD SRL — partenerul tău de încredere pentru agregate minerale, exploatări de suprafață și materiale de construcții în județul Cluj și în întreaga țară.</p>
@@ -86,7 +90,7 @@
     <h2 class="section-title">Despre noi</h2>
     <p class="section-subtitle">Un start-up menit să demonstreze competențele antreprenoriale feminine într-o lume a bărbaților.</p>
     <div class="about-grid">
-      <div class="about-image" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80')"></div>
+      <div class="about-image" style="background-image:url('images/unsplash-1600585154340-be6161a56a0c.jpg')"></div>
       <div class="about-text">
         <p><strong>Musoma PROD SRL</strong> este un start-up din domeniul exploatării resurselor minerale, înființat în anul 2022, cu sediul în localitatea Mintiu Gherlii, județul Cluj.</p>
         <p>Ne propunem să ne extindem la nivel național, având în vedere că obiectul nostru de activitate se pretează la o dezvoltare economică deosebită, în lumina investițiilor în infrastructură ce se preconizează în România.</p>
@@ -147,7 +151,7 @@
     <p class="section-subtitle">Fiecare proiect este o dovadă a angajamentului nostru pentru calitate și profesionalism.</p>
     <div class="portfolio-grid">
       <div class="portfolio-card">
-        <div class="portfolio-img" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80')"></div>
+        <div class="portfolio-img" style="background-image:url('images/unsplash-1600585154340-be6161a56a0c.jpg')"></div>
         <div class="portfolio-body">
           <h3>Aprovizionare agregate — Lot Autostradă</h3>
           <div class="meta">2024 — 5.000 tone pietriș sortat</div>
@@ -155,7 +159,7 @@
         </div>
       </div>
       <div class="portfolio-card">
-        <div class="portfolio-img" style="background-image:url('https://images.unsplash.com/photo-1624969862644-791f3dc98927?w=600&q=80')"></div>
+        <div class="portfolio-img" style="background-image:url('images/unsplash-1581092160607-ee22621dd758.jpg')"></div>
         <div class="portfolio-body">
           <h3>Exploatare argilă — Fabrică ceramică</h3>
           <div class="meta">2024 — Contract trimestrial</div>
@@ -163,7 +167,7 @@
         </div>
       </div>
       <div class="portfolio-card">
-        <div class="portfolio-img" style="background-image:url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80')"></div>
+        <div class="portfolio-img" style="background-image:url('images/volvo-ec250el-01.jpg')"></div>
         <div class="portfolio-body">
           <h3>Transport nisip — Stație betoane</h3>
           <div class="meta">2025 — Colaborare în derulare</div>

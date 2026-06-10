@@ -33,6 +33,9 @@
         <small>Extracție &amp; Agregate</small>
       </div>
     </a>
+    <div class="hamburger" onclick="document.querySelector('nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
     <nav>
       <a href="index.html">Acasă</a>
       <a href="servicii.html">Servicii</a>
@@ -42,9 +45,10 @@
     </nav>
   </div>
 </header>
+<script>document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>document.querySelector('nav').classList.remove('open')))</script>
 
 <section class="page-hero">
-  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1920&q=80')"></div>
+  <div class="page-hero-bg" style="background-image:url('images/volvo-ec250el-01.jpg')"></div>
   <div class="container">
     <h1>Contact</h1>
     <p>Suntem aici pentru orice întrebare sau propunere de colaborare.</p>
