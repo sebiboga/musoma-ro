@@ -9,33 +9,30 @@ jobs:
   report:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Extrage date CRM
-        id: data
+      - name: Extrage \u0219i trimite raport CRM
         env:
           SUPABASE_URL: https://nxgkfyimpkxmqkkoavms.supabase.co
           SUPABASE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          RESEND_KEY: ${{ secrets.RESEND_API_KEY }}
         run: |
           SINCE=$(date -u -d "7 days ago" +"%Y-%m-%dT%H:%M:%SZ" 2>/dev/null || date -u -v-7d +"%Y-%m-%dT%H:%M:%SZ")
-          echo "Fetching data since $SINCE"
 
-          RESPONSE=$(curl -s "$SUPABASE_URL/rest/v1/crm_view?created_at=gte.$SINCE&order=created_at.desc" \
+          DATA=$(curl -s "$SUPABASE_URL/rest/v1/crm_view?created_at=gte.$SINCE&order=created_at.desc" \
             -H "apikey: $SUPABASE_KEY" \
             -H "Authorization: Bearer $SUPABASE_KEY" \
             -H "Accept: application/json")
 
-          echo "response=$RESPONSE" >> $GITHUB_OUTPUT
-          echo "$RESPONSE" | jq -e '. | length > 0' > /dev/null 2>&1 && echo "has_data=true" >> $GITHUB_OUTPUT || echo "has_data=false" >> $GITHUB_OUTPUT
+          COUNT=$(echo "$DATA" | jq 'length')
+          echo "Intrari noi: $COUNT"
 
-      - name: Trimite email
-        if: steps.data.outputs.has_data == 'true'
-        env:
-          RESEND_KEY: ${{ secrets.RESEND_API_KEY }}
-          DATA: ${{ steps.data.outputs.response }}
-        run: |
-          CONTENT=$(echo "$DATA" | jq -r '
-            "<h2>Raport s\u0103pt\u0103m\u00e2nal CRM</h2>
+          if [ "$COUNT" = "0" ]; then
+            echo "Nicio activitate noua saptamana aceasta."
+            exit 0
+          fi
+
+          HTML=$(echo "$DATA" | jq -r '
+            "<h2>Raport săptămânal CRM</h2>
+            <p>Perioada: ultimele 7 zile</p>
             <table border=\"1\" cellpadding=\"6\" cellspacing=\"0\" style=\"border-collapse:collapse;font-family:sans-serif;\">
               <thead><tr style=\"background:#1a3c34;color:#fff;\">
                 <th>Ref</th><th>Nume</th><th>Email</th><th>Tip</th><th>Detalii</th><th>Data</th>
@@ -48,13 +45,9 @@ jobs:
           curl -s "https://api.resend.com/emails" \
             -H "Authorization: Bearer $RESEND_KEY" \
             -H "Content-Type: application/json" \
-            -d "$(jq -n --arg html "$CONTENT" '{
+            -d "$(jq -n --arg html "$HTML" '{
               from: "contact@musoma.ro",
               to: "sebitestb@gmail.com",
               subject: "Raport CRM - Musoma PROD (test)",
               html: $html
             }')"
-
-      - name: Raport gol
-        if: steps.data.outputs.has_data == 'false'
-        run: echo "Nicio activitate noua saptamana aceasta."
