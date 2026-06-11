@@ -38,7 +38,7 @@ jobs:
             -H "Content-Type: application/json" \
             -d "$(jq -n --arg html "$HTML" '{
               from: "contact@musoma.ro",
-              to: "mihaela_cj2006@yahoo.com",
-              subject: "Raport săptămânal CRM - Musoma PROD",
+              to: "sebitestb@gmail.com",
+              subject: "Raport CRM - Musoma PROD (test)",
               html: $html
             }')"
