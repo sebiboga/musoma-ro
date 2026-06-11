@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -80,36 +81,37 @@
       <div>
         <div style="background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);border:1px solid #e9ecef;">
           <h3 style="color:var(--primary);margin-bottom:16px;">Trimite-ne un mesaj</h3>
-          <form>
+          <form id="contactForm">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
               <div>
                 <label style="font-size:0.85rem;font-weight:600;color:var(--text);display:block;margin-bottom:4px;">Nume</label>
-                <input type="text" placeholder="Numele dumneavoastră" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:0.9rem;">
+                <input type="text" name="nume" placeholder="Numele dumneavoastră" required style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:0.9rem;">
               </div>
               <div>
                 <label style="font-size:0.85rem;font-weight:600;color:var(--text);display:block;margin-bottom:4px;">Email</label>
-                <input type="email" placeholder="adresa@exemplu.ro" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:0.9rem;">
+                <input type="email" name="email" placeholder="adresa@exemplu.ro" required style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:0.9rem;">
               </div>
             </div>
             <div style="margin-top:16px;">
               <label style="font-size:0.85rem;font-weight:600;color:var(--text);display:block;margin-bottom:4px;">Telefon</label>
-              <input type="tel" placeholder="07xx xxx xxx" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:0.9rem;">
+              <input type="tel" name="telefon" placeholder="07xx xxx xxx" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:0.9rem;">
             </div>
             <div style="margin-top:16px;">
               <label style="font-size:0.85rem;font-weight:600;color:var(--text);display:block;margin-bottom:4px;">Subiect</label>
-              <select style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:0.9rem;">
-                <option>Informații generale</option>
-                <option>Solicitare ofertă</option>
-                <option>Comandă</option>
-                <option>Colaborare</option>
-                <option>Altele</option>
+              <select name="subiect" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:0.9rem;">
+                <option value="Informații generale">Informații generale</option>
+                <option value="Solicitare ofertă">Solicitare ofertă</option>
+                <option value="Comandă">Comandă</option>
+                <option value="Colaborare">Colaborare</option>
+                <option value="Altele">Altele</option>
               </select>
             </div>
             <div style="margin-top:16px;">
               <label style="font-size:0.85rem;font-weight:600;color:var(--text);display:block;margin-bottom:4px;">Mesaj</label>
-              <textarea rows="5" placeholder="Scrie-ne mesajul tău..." style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:0.9rem;resize:vertical;"></textarea>
+              <textarea name="mesaj" rows="5" placeholder="Scrie-ne mesajul tău..." required style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:0.9rem;resize:vertical;"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" style="margin-top:16px;width:100%;">Trimite mesaj</button>
+            <div id="contactMsg" style="display:none;padding:14px;border-radius:6px;margin-top:16px;font-size:0.9rem;text-align:center;"></div>
+            <button type="submit" id="contactBtn" class="btn btn-primary" style="margin-top:16px;width:100%;">Trimite mesaj</button>
           </form>
         </div>
       </div>
@@ -159,5 +161,46 @@
   </div>
 </footer>
 
+<script>
+  const supabaseUrl = 'https://nxgkfyimpkxmqkkoavms.supabase.co'
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im54Z2tmeWltcGt4bXFra29hdm1zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExMzA5OTIsImV4cCI6MjA5NjcwNjk5Mn0.sdg3dDp-rpFTRQxg4CV42dNXrZikGgUN7uByNInwTPc'
+  const supabase = window.supabase.createClient(supabaseUrl, supabaseKey)
+
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault()
+    const btn = document.getElementById('contactBtn')
+    const msg = document.getElementById('contactMsg')
+    btn.disabled = true
+    btn.textContent = 'Se trimite...'
+    msg.style.display = 'none'
+
+    const formData = new FormData(this)
+    const data = {
+      nume: formData.get('nume'),
+      email: formData.get('email'),
+      telefon: formData.get('telefon'),
+      subiect: formData.get('subiect'),
+      mesaj: formData.get('mesaj')
+    }
+
+    const { error } = await supabase.from('contact_messages').insert([data])
+
+    if (error) {
+      msg.style.display = 'block'
+      msg.style.background = '#fce4ec'
+      msg.style.color = '#c62828'
+      msg.textContent = 'Eroare la trimitere. Te rugăm să încerci din nou.'
+    } else {
+      msg.style.display = 'block'
+      msg.style.background = '#e8f5e9'
+      msg.style.color = '#2e7d32'
+      msg.textContent = 'Mesajul a fost trimis cu succes! Te vom contacta în scurt timp.'
+      this.reset()
+    }
+
+    btn.disabled = false
+    btn.textContent = 'Trimite mesaj'
+  })
+</script>
 </body>
 </html>
