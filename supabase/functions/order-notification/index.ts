@@ -50,7 +50,7 @@ Deno.serve(async (req) => {
     },
     body: JSON.stringify({
       from: "contact@musoma.ro",
-      to: ["mihaela_cj2006@yahoo.com", "sebitestb@gmail.com"],
+      to: "mihaela_cj2006@yahoo.com",
       subject,
       html,
     }),
